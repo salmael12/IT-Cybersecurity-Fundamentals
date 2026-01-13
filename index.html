@@ -372,6 +372,105 @@ body.dark .exercises h3 {
   color: var(--secondary);
 }
 
+.practice-exercise {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  padding: 25px;
+  border-radius: 14px;
+  margin: 25px 0;
+  border: 2px solid #ffc107;
+  box-shadow: 0 6px 20px rgba(255,193,7,0.2);
+}
+
+body.dark .practice-exercise {
+  background: linear-gradient(135deg, #2d230a 0%, #1a1406 100%);
+  border: 2px solid #d39e00;
+  box-shadow: 0 6px 20px rgba(211,158,0,0.3);
+}
+
+.practice-exercise h3 {
+  color: #e65100;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+body.dark .practice-exercise h3 {
+  color: #ffb300;
+}
+
+.exercise-item {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+body.dark .exercise-item {
+  background: #2d3748;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.exercise-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+body.dark .exercise-title {
+  color: var(--secondary);
+}
+
+.exercise-question {
+  font-family: 'Courier New', monospace;
+  font-size: 1.3rem;
+  text-align: center;
+  margin: 15px 0;
+  line-height: 1.8;
+}
+
+.answer-section {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px dashed #4fc3f7;
+}
+
+.reveal-btn {
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.reveal-btn:hover {
+  background: #0288d1;
+  transform: translateY(-2px);
+}
+
+.answer {
+  margin-top: 15px;
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  display: none;
+}
+
+body.dark .answer {
+  background: #0f2a4d;
+}
+
+.answer.show {
+  display: block;
+}
+
 .footer-logo {
   display: flex;
   align-items: center;
@@ -702,15 +801,34 @@ chmod 644 = rw-r--r-- (propriétaire: lecture/écriture, groupe/autres: lecture 
 
 <section id="exercises">
 <h2><i class="fas fa-clipboard-list"></i> 7️⃣ Exercices pratiques</h2>
-<div class="exercises">
-  <h3><i class="fas fa-flask"></i> Mettez en pratique vos connaissances :</h3>
-  <ol>
-    <li><strong>Calcul CIDR</strong> : Quel est le nombre d'hôtes utilisables dans un réseau /26 ?</li>
-    <li><strong>Conversion binaire</strong> : Convertissez l'adresse IP 172.16.254.1 en binaire complet</li>
-    <li><strong>Permissions Linux</strong> : Donnez la commande chmod équivalente à rwxr-x---</li>
-    <li><strong>Adressage MAC</strong> : Identifiez le fabricant à partir de l'adresse MAC 00:1B:44:11:3A:B7</li>
-    <li><strong>Sous-réseaux</strong> : Divisez le réseau 192.168.1.0/24 en 4 sous-réseaux égaux</li>
-  </ol>
+
+<div class="practice-exercise">
+  <h3>Practice Exercise: Binary Operations</h3>
+  <p>Try and solve the following exercises</p>
+  
+  <div class="exercise-item">
+    <div class="exercise-title">Exercise 1: Binary Addition</div>
+    <div class="exercise-question">
+      &nbsp;&nbsp;1011<br>
+      + 1101<br>
+    </div>
+    <button class="reveal-btn" onclick="toggleAnswer('answer1')">Reveal Answer</button>
+    <div class="answer" id="answer1">11000</div>
+  </div>
+  
+  <div class="exercise-item">
+    <div class="exercise-title">Exercise 2: IP Address Conversion</div>
+    <div class="exercise-question">192.168.1.1 (decimal) =</div>
+    <button class="reveal-btn" onclick="toggleAnswer('answer2')">Reveal Answer</button>
+    <div class="answer" id="answer2">11000000.10101000.00000001.00000001 (binary)</div>
+  </div>
+  
+  <div class="exercise-item">
+    <div class="exercise-title">Exercise 3: Subnet Mask</div>
+    <div class="exercise-question">255.255.255.0 (decimal) =</div>
+    <button class="reveal-btn" onclick="toggleAnswer('answer3')">Reveal Answer</button>
+    <div class="answer" id="answer3">11111111.11111111.11111111.00000000 (binary)</div>
+  </div>
 </div>
 </section>
 
@@ -758,6 +876,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
   });
 });
+
+// Toggle answer visibility
+function toggleAnswer(answerId) {
+  const answer = document.getElementById(answerId);
+  answer.classList.toggle('show');
+  
+  const button = event.target;
+  if (answer.classList.contains('show')) {
+    button.textContent = 'Hide Answer';
+  } else {
+    button.textContent = 'Reveal Answer';
+  }
+}
 </script>
 
 </body>
