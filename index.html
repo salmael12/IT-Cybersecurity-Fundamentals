@@ -1,344 +1,765 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📘 Fondamentaux IT & Cybersécurité</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --success: #27ae60;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #f9f9f9;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .banner {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        
-        .content {
-            padding: 30px;
-        }
-        
-        .toc {
-            background: var(--light);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-        
-        .toc h2 {
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .toc ul {
-            list-style: none;
-            columns: 2;
-            column-gap: 30px;
-        }
-        
-        .toc li {
-            margin-bottom: 8px;
-            break-inside: avoid;
-        }
-        
-        .toc a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .toc a:hover {
-            color: var(--accent);
-            text-decoration: underline;
-        }
-        
-        section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-left: 4px solid var(--secondary);
-            background: #fafafa;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        section h2 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-        
-        section h3 {
-            color: var(--secondary);
-            margin: 15px 0 10px;
-            font-size: 1.4rem;
-        }
-        
-        ul, ol {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        .image-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .code-block {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .highlight {
-            background: var(--light);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--primary);
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-        }
-        
-        @media (max-width: 768px) {
-            .toc ul {
-                columns: 1;
-            }
-            
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            section {
-                padding: 15px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fondamentaux IT & Cybersécurité</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --primary:#0d47a1;
+  --primary-dark:#092f6b;
+  --secondary:#4fc3f7;
+  --accent:#ff6b35;
+  --success:#66bb6a;
+  --bg-light:#f8fafc;
+  --card-light:#ffffff;
+  --text-light:#1e293b;
+  --border-light:#e2e8f0;
+
+  --bg-dark:#0c1427;
+  --card-dark:#1a2642;
+  --text-dark:#cbd5e1;
+  --border-dark:#334155;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:var(--bg-light);
+  color:var(--text-light);
+  transition:.4s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height:1.7;
+}
+
+body.dark{
+  background:var(--bg-dark);
+  color:var(--text-dark);
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  background:var(--card-light);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+body.dark .container{
+  background:var(--card-dark);
+  box-shadow:0 12px 40px rgba(0,0,0,.35);
+}
+
+header{
+  background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color:white;
+  padding:55px 40px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: -40px;
+  width: 280px;
+  height: 280px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+
+.points-badge {
+  position: absolute;
+  top: 25px;
+  right: 80px;
+  background: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 15px rgba(255,107,53,0.4);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+header h1{
+  font-size:2.8rem;
+  margin-bottom:15px;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+header p{
+  opacity:.95;
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  position: relative;
+  z-index: 2;
+  line-height: 1.6;
+}
+
+.toggle{
+  position:absolute;
+  top:25px;
+  right:25px;
+  background:rgba(255,255,255,.25);
+  border:none;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  color:white;
+  cursor:pointer;
+  font-size:1.3rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.toggle:hover {
+  transform: rotate(30deg) scale(1.1);
+  background: rgba(255,255,255,0.35);
+}
+
+.banner{
+  width:100%;
+  height:350px;
+  object-fit:cover;
+  filter: brightness(0.85) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+.content{
+  padding:45px;
+}
+
+.toc {
+  background: var(--card-light);
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 40px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+body.dark .toc {
+  background: var(--card-dark);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.toc h2 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.8rem;
+}
+
+body.dark .toc h2 {
+  color: var(--secondary);
+}
+
+.toc ul {
+  list-style: none;
+  columns: 2;
+  column-gap: 35px;
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .toc ul {
+    columns: 1;
+  }
+}
+
+.toc li {
+  margin-bottom: 12px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.toc li:hover {
+  background: rgba(79, 195, 247, 0.15);
+  transform: translateX(8px);
+  border-left: 3px solid var(--secondary);
+}
+
+body.dark .toc li:hover {
+  background: rgba(79, 195, 247, 0.25);
+}
+
+.toc a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.05rem;
+}
+
+body.dark .toc a {
+  color: var(--text-dark);
+}
+
+.toc i {
+  color: var(--secondary);
+  font-size: 1.2rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+section{
+  background:var(--card-light);
+  margin-bottom:40px;
+  padding:30px;
+  border-radius:14px;
+  border-left:5px solid var(--secondary);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(79,195,247,0.1), transparent);
+  transition: left 0.8s;
+}
+
+section:hover::before {
+  left: 100%;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+body.dark section{
+  background:var(--card-dark);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+body.dark section:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+section h2{
+  color:var(--primary);
+  margin-bottom:20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+body.dark section h2{
+  color:var(--secondary);
+}
+
+ul{margin-left:30px; margin-top: 15px;}
+li{
+  margin-bottom:12px; 
+  position: relative; 
+  padding-left: 15px;
+  font-size: 1.05rem;
+}
+li::before {
+  content: "•";
+  color: var(--secondary);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.highlight {
+  background: linear-gradient(120deg, rgba(79,195,247,0.25) 0%, rgba(79,195,247,0.35) 100%);
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+body.dark .highlight {
+  background: linear-gradient(120deg, rgba(79,195,247,0.35) 0%, rgba(79,195,247,0.45) 100%);
+  color: var(--text-dark);
+}
+
+.code-block {
+  background: #0f172a;
+  color: #e0f7fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+  overflow-x: auto;
+  border: 1px solid #334155;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
+}
+
+body.dark .code-block {
+  background: #091122;
+  border: 1px solid #2c3a5a;
+}
+
+.exercises {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 25px;
+  border-radius: 14px;
+  margin: 25px 0;
+  border: 2px solid var(--secondary);
+  box-shadow: 0 6px 20px rgba(79,195,247,0.2);
+}
+
+body.dark .exercises {
+  background: linear-gradient(135deg, #1a2642 0%, #0c1427 100%);
+  border: 2px solid var(--secondary);
+  box-shadow: 0 6px 20px rgba(79,195,247,0.3);
+}
+
+.exercises h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.4rem;
+}
+
+body.dark .exercises h3 {
+  color: var(--secondary);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.footer-logo i {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  background:var(--bg-light);
+  color: var(--primary);
+  font-size: 1.1rem;
+  border-top: 1px solid var(--border-light);
+}
+
+body.dark footer{
+  background:var(--bg-dark);
+  color: var(--text-dark);
+  border-top: 1px solid var(--border-dark);
+}
+
+/* Animation pour les sections */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4) { animation-delay: 0.4s; }
+section:nth-child(5) { animation-delay: 0.5s; }
+section:nth-child(6) { animation-delay: 0.6s; }
+section:nth-child(7) { animation-delay: 0.7s; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content {
+    padding: 25px;
+  }
+  
+  header {
+    padding: 40px 20px;
+  }
+  
+  header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .points-badge {
+    position: static;
+    margin: 15px auto;
+    width: fit-content;
+    right: auto;
+  }
+  
+  .toggle {
+    position: static;
+    margin: 15px auto;
+    right: auto;
+  }
+  
+  .banner {
+    height: 250px;
+  }
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>📘 Fondamentaux IT & Cybersécurité</h1>
-            <p>Ce projet regroupe les concepts essentiels de l'informatique et de la cybersécurité, ainsi que des exercices pratiques pour débutants et professionnels.</p>
-        </header>
-        
-        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Cybersecurity Banner" class="banner">
-        
-        <div class="content">
-            <div class="toc">
-                <h2>Table des matières</h2>
-                <ul>
-                    <li><a href="#section1">1. Introduction à l'Informatique 💻</a></li>
-                    <li><a href="#section2">2. Types de matériels et composants 🖥️📱</a></li>
-                    <li><a href="#section3">3. Équipements réseau 🌐</a></li>
-                    <li><a href="#section4">4. Logiciels et installation 🛠️</a></li>
-                    <li><a href="#section5">5. Configuration système et sécurité 🔐</a></li>
-                    <li><a href="#section6">6. Systèmes de numération 🔢</a></li>
-                    <li><a href="#section7">7. Conversion entre systèmes de numération 🔄</a></li>
-                    <li><a href="#section8">8. Exercices pratiques 📝</a></li>
-                    <li><a href="#section9">9. Liens utiles 🌐</a></li>
-                </ul>
-            </div>
-            
-            <section id="section1">
-                <h2>1. Introduction à l'Informatique 💻</h2>
-                <p>L'informatique (IT) est la base des systèmes et réseaux modernes. Pour un professionnel en cybersécurité, comprendre ces bases permet de :</p>
-                <ul>
-                    <li>Détecter les vulnérabilités</li>
-                    <li>Protéger les systèmes</li>
-                    <li>Réagir efficacement aux incidents</li>
-                </ul>
-            </section>
-            
-            <section id="section2">
-                <h2>2. Types de matériels et composants 🖥️📱</h2>
-                
-                <h3>Ordinateurs</h3>
-                <ul>
-                    <li><span class="highlight">Desktop</span> : Fixe, puissant et évolutif</li>
-                    <li><span class="highlight">Laptop</span> : Portable, intégrant tous les composants</li>
-                    <li><span class="highlight">Serveurs</span> : Fournissent des services aux autres machines</li>
-                    <li><span class="highlight">Appareils mobiles</span> : Smartphones, tablettes</li>
-                    <li><span class="highlight">Objets connectés (IoT)</span> : Caméras, thermostats, assistants vocaux</li>
-                    <li><span class="highlight">Systèmes embarqués</span> : Ordinateurs intégrés dans machines spécialisées</li>
-                </ul>
-                
-                <h3>Composants matériels essentiels</h3>
-                <ul>
-                    <li><span class="highlight">CPU</span> : Processeur, "cerveau" de l'ordinateur</li>
-                    <li><span class="highlight">RAM</span> : Mémoire temporaire pour exécuter les programmes</li>
-                    <li><span class="highlight">Stockage</span> : HDD / SSD</li>
-                    <li><span class="highlight">Carte mère</span> : Connecte tous les composants et contient BIOS/UEFI</li>
-                    <li><span class="highlight">GPU</span> : Processeur graphique</li>
-                    <li><span class="highlight">Périphériques</span> : Clavier, souris, caméra, USB…</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1581091012184-6e3e6ec8f3e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Hardware Components">
-                </div>
-            </section>
-            
-            <section id="section3">
-                <h2>3. Équipements réseau 🌐</h2>
-                <ul>
-                    <li><span class="highlight">Routeurs</span> : Dirigent le trafic entre réseaux</li>
-                    <li><span class="highlight">Switches</span> : Connectent les appareils sur un réseau local</li>
-                    <li><span class="highlight">Firewalls</span> : Filtrent le trafic pour sécuriser les données</li>
-                    <li><span class="highlight">Points d'accès</span> : Fournissent le Wi-Fi aux appareils</li>
-                    <li><span class="highlight">Modems / Passerelles</span> : Connectent le réseau à Internet</li>
-                    <li><span class="highlight">Cartes réseau (NIC)</span> : Interface physique pour le réseau</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="https://images.unsplash.com/photo-1593642634367-d91a135587b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Network Equipment">
-                </div>
-            </section>
-            
-            <section id="section4">
-                <h2>4. Logiciels et installation 🛠️</h2>
-                
-                <h3>Types de logiciels</h3>
-                <ul>
-                    <li><span class="highlight">OS</span> : Windows, Linux, macOS</li>
-                    <li><span class="highlight">Applications</span> : Productivité, multimédia, jeux</li>
-                    <li><span class="highlight">Utilitaires</span> : Optimisation, maintenance</li>
-                    <li><span class="highlight">Drivers</span> : Communication entre matériel et OS</li>
-                </ul>
-                
-                <h3>Installation</h3>
-                <ul>
-                    <li><span class="highlight">Support physique</span> : DVD, clé USB</li>
-                    <li><span class="highlight">Téléchargement en ligne</span></li>
-                    <li><span class="highlight">Gestionnaires de paquets</span> : winget, apt/yum, Homebrew</li>
-                    <li><span class="highlight">Ligne de commande</span> : Installation et configuration avancée</li>
-                </ul>
-            </section>
-            
-            <section id="section5">
-                <h2>5. Configuration système et sécurité 🔐</h2>
-                <ul>
-                    <li><span class="highlight">BIOS / UEFI</span> : Initialisation du matériel et ordre de démarrage</li>
-                    <li><span class="highlight">Partitionnement / Formats</span> : MBR, GPT, NTFS, ext4, exFAT</li>
-                    <li><span class="highlight">Gestion des drivers</span> : Installation et mise à jour</li>
-                    <li><span class="highlight">Comptes utilisateurs</span> : Admin, standard, invité</li>
-                    <li><span class="highlight">Paramètres réseau</span> : IP statique / DHCP, DNS, proxy</li>
-                    <li><span class="highlight">Sécurité</span> : Firewall, antivirus, mises à jour, mots de passe forts</li>
-                    <li><span class="highlight">Sauvegardes</span> : Full, incrémentale, différentielle, locales ou cloud</li>
-                </ul>
-            </section>
-            
-            <section id="section6">
-                <h2>6. Systèmes de numération 🔢</h2>
-                <ul>
-                    <li><span class="highlight">Binaire (2)</span> : 0 et 1</li>
-                    <li><span class="highlight">Octal (8)</span> : 0–7</li>
-                    <li><span class="highlight">Décimal (10)</span> : Standard humain</li>
-                    <li><span class="highlight">Hexadécimal (16)</span> : 0–9 + A–F</li>
-                    <li><span class="highlight">Encodage</span> : ASCII, Unicode</li>
-                    <li><span class="highlight">Base64</span> : Binaire → texte</li>
-                </ul>
-            </section>
-            
-            <section id="section7">
-                <h2>7. Conversion entre systèmes de numération 🔄</h2>
-                <div class="code-block">
-Binaire ↔ Décimal : 1011₂ = 11₁₀<br>
-Décimal ↔ Binaire : 11₁₀ = 1011₂<br>
-Hexadécimal ↔ Binaire/Décimal : FF₁₆ = 11111111₂ = 255₁₀<br>
-Octal ↔ Binaire/Décimal : 77₈ = 111111₂ = 63₁₀
-                </div>
-            </section>
-            
-            <section id="section8">
-                <h2>8. Exercices pratiques 📝</h2>
-                <p>Essayez ces exercices pour tester vos connaissances :</p>
-                <ol>
-                    <li><strong>Addition binaire</strong> : 1011 + 1101 = ?</li>
-                    <li><strong>Conversion d'adresse IP</strong> : 192.168.1.1 en binaire</li>
-                    <li><strong>Masque de sous-réseau</strong> : 255.255.255.0 en binaire</li>
-                </ol>
-            </section>
-            
-            <section id="section9">
-                <h2>9. Liens utiles 🌐</h2>
-                <ul>
-                    <li><a href="https://www.cisco.com/c/en/us/solutions/small-business/resource-center/networking/networking-basics.html" target="_blank">Cisco Networking Basics</a></li>
-                    <li><a href="https://www.geeksforgeeks.org/computer-network-tutorials/" target="_blank">GeeksforGeeks - Computer Networks</a></li>
-                    <li><a href="https://www.cybrary.it/" target="_blank">Cybrary - Free Cybersecurity Training</a></li>
-                    <li><a href="https://tryhackme.com/" target="_blank">TryHackMe - Hands-on Cybersecurity</a></li>
-                </ul>
-            </section>
-        </div>
-        
-        <footer>
-            <p>Copyright © 2026 ALX, All rights reserved.</p>
-        </footer>
+<div class="container">
+
+<header>
+  <button class="toggle" id="toggle"><i class="fas fa-moon"></i></button>
+  <div class="points-badge">
+  </div>
+  <h1>Fondamentaux IT & Cybersécurité</h1>
+  <p>Base complète et professionnelle pour les passionnés de réseaux informatique et cybersécurité</p>
+</header>
+
+<img class="banner" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" alt="Cybersecurity">
+
+<div class="content">
+
+<div class="toc">
+  <h2><i class="fas fa-list"></i> Table des matières</h2>
+  <ul>
+    <li><a href="#intro"><i class="fas fa-laptop-code"></i> Introduction</a></li>
+    <li><a href="#hardware"><i class="fas fa-microchip"></i> Matériels & Composants</a></li>
+    <li><a href="#network"><i class="fas fa-network-wired"></i> Équipements réseau</a></li>
+    <li><a href="#software"><i class="fas fa-download"></i> Logiciels & Installation</a></li>
+    <li><a href="#security"><i class="fas fa-shield-alt"></i> Sécurité système</a></li>
+    <li><a href="#number"><i class="fas fa-calculator"></i> Systèmes de numération</a></li>
+    <li><a href="#exercises"><i class="fas fa-clipboard-list"></i> Exercices pratiques</a></li>
+  </ul>
+</div>
+
+<section id="intro">
+<h2><i class="fas fa-laptop-code"></i> 1️⃣ Introduction</h2>
+<p>L'informatique est la base fondamentale de la cybersécurité moderne. Une compréhension approfondie du matériel, des réseaux et des systèmes d'exploitation permet aux professionnels de :</p>
+<ul>
+  <li>Détecter et analyser les vulnérabilités dans les infrastructures IT</li>
+  <li>Implémenter des stratégies de protection efficaces et adaptées</li>
+  <li>Répondre rapidement et efficacement aux incidents de sécurité</li>
+  <li>Communiquer de manière technique avec les équipes réseau et développement</li>
+  <li>Concevoir des architectures sécurisées dès la phase de planification</li>
+</ul>
+</section>
+
+<section id="hardware">
+<h2><i class="fas fa-microchip"></i> 2️⃣ Matériels & Composants</h2>
+
+<div style="background: #0d47a1; padding: 25px; border-radius: 12px; margin: 20px 0;">
+  <h3 style="color: white; text-align: center; margin-bottom: 20px;">Computer Hardware</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; color: white;">
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">💻</div>
+      <div>CPU</div>
     </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">🧠</div>
+      <div>Memory (RAM)</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">💾</div>
+      <div>Storage</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">🎮</div>
+      <div>GPU</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">🔌</div>
+      <div>Motherboard</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">⌨️🖱️</div>
+      <div>Peripherals</div>
+    </div>
+  </div>
+</div>
+
+<ul>
+  <li><span class="highlight">CPU (Processeur)</span> : Intel Xeon, AMD EPYC - cœur du traitement informatique</li>
+  <li><span class="highlight">RAM (Mémoire vive)</span> : DDR4/DDR5 ECC - stockage temporaire haute performance</li>
+  <li><span class="highlight">Stockage</span> : SSD NVMe PCIe 4.0 vs HDD SATA - performance vs capacité</li>
+  <li><span class="highlight">Carte mère</span> : Chipsets serveur (Intel C621) avec support RAID intégré</li>
+  <li><span class="highlight">GPU</span> : NVIDIA Tesla pour calcul parallèle et IA en cybersécurité</li>
+  <li><span class="highlight">Alimentation</span> : PSU redondante 80+ Platinum pour les environnements critiques</li>
+</ul>
+</section>
+
+<section id="network">
+<h2><i class="fas fa-network-wired"></i> 3️⃣ Équipements réseau</h2>
+
+<div style="background: #0d47a1; padding: 25px; border-radius: 12px; margin: 20px 0;">
+  <h3 style="color: white; text-align: center; margin-bottom: 20px;">Networking Equipment</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; color: white;">
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">📡</div>
+      <div>Router</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">🔌</div>
+      <div>Switch</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">🛡️</div>
+      <div>Firewall</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">📶</div>
+      <div>Access Point</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">🌐</div>
+      <div>Modem & Gateway</div>
+    </div>
+    <div>
+      <div style="font-size: 4rem; margin-bottom: 10px;">📡</div>
+      <div>NIC</div>
+    </div>
+  </div>
+</div>
+
+<p>Les équipements réseau sont les composants physiques essentiels qui permettent la communication entre les dispositifs dans une infrastructure informatique. Voici les principaux équipements utilisés dans les réseaux modernes avec leurs caractéristiques techniques détaillées :</p>
+
+<h3 style="margin-top: 25px; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-route"></i> Routeurs (Routers)</h3>
+<ul>
+  <li><strong>Fonction principale :</strong> Connecter différents réseaux (LAN/WAN) et diriger le trafic entre eux en utilisant des tables de routage dynamiques ou statiques</li>
+  <li><strong>Couche OSI :</strong> Couche 3 (Réseau)</li>
+  <li><strong>Protocoles :</strong> RIP, OSPF, BGP, EIGRP</li>
+  <li><strong>Utilisation typique :</strong> Réseaux d'entreprise, fournisseurs d'accès internet (FAI), passerelles internet</li>
+  <li><strong>Exemples :</strong> Cisco ISR 4000, Juniper MX Series, MikroTik RouterOS</li>
+</ul>
+
+<h3 style="margin-top: 25px; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-exchange-alt"></i> Commutateurs (Switches)</h3>
+<ul>
+  <li><strong>Fonction principale :</strong> Connecter les appareils au sein d'un même réseau local (LAN) et transmettre les trames de données uniquement à la destination correcte en utilisant les adresses MAC</li>
+  <li><strong>Couche OSI :</strong> Couche 2 (Liaison de données) - Les switches multicouches fonctionnent aussi en couche 3</li>
+  <li><strong>Technologies :</strong> VLAN, STP, PoE (Power over Ethernet), LACP</li>
+  <li><strong>Utilisation typique :</strong> Bureaux, centres de données, réseaux locaux d'entreprise</li>
+  <li><strong>Exemples :</strong> Cisco Catalyst 9000, HPE Aruba, Dell PowerSwitch</li>
+</ul>
+
+<h3 style="margin-top: 25px; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-shield-alt"></i> Pare-feu (Firewalls)</h3>
+<ul>
+  <li><strong>Fonction principale :</strong> Filtrer le trafic entrant et sortant selon des règles de sécurité prédéfinies pour protéger le réseau contre les menaces externes et internes</li>
+  <li><strong>Couche OSI :</strong> Couches 3-7 (Réseau à Application)</li>
+  <li><strong>Types :</strong> Pare-feu stateful, pare-feu nouvelle génération (NGFW), pare-feu applicatifs (WAF)</li>
+  <li><strong>Fonctionnalités :</strong> Inspection DPI (Deep Packet Inspection), IPS/IDS, filtrage d'URL, contrôle d'applications</li>
+  <li><strong>Utilisation typique :</strong> Périmètre réseau, segmentation interne, protection des serveurs</li>
+  <li><strong>Exemples :</strong> Fortinet FortiGate, Palo Alto Networks, Cisco Firepower</li>
+</ul>
+
+<h3 style="margin-top: 25px; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-wifi"></i> Points d'accès sans fil (Wireless Access Points)</h3>
+<ul>
+  <li><strong>Fonction principale :</strong> Permettre aux appareils sans fil de se connecter au réseau câblé via des ondes radio (Wi-Fi)</li>
+  <li><strong>Couche OSI :</strong> Couches 1-2 (Physique/Liaison)</li>
+  <li><strong>Standards :</strong> IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6)</li>
+  <li><strong>Technologies :</strong> MIMO, beamforming, roaming rapide, gestion centralisée</li>
+  <li><strong>Utilisation typique :</strong> Environnements mobiles, bureaux modernes, campus universitaires, hôtels</li>
+  <li><strong>Exemples :</strong> Cisco Aironet, Aruba AP, Ubiquiti UniFi</li>
+</ul>
+
+<h3 style="margin-top: 25px; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-plug"></i> Modems et Passerelles</h3>
+<ul>
+  <li><strong>Modem :</strong> Convertit le signal analogique (DSL/câble) ou optique (fibre) en signal numérique utilisable par les équipements réseau</li>
+  <li><strong>Passerelle :</strong> Combine les fonctions de modem, routeur, switch et parfois point d'accès en un seul appareil</li>
+  <li><strong>Couche OSI :</strong> Couche 1 (Physique)</li>
+  <li><strong>Utilisation typique :</strong> Connexion internet chez les particuliers et PME</li>
+  <li><strong>Exemples :</strong> Box opérateur (Orange Livebox, SFR Box), modems fibre Huawei</li>
+</ul>
+
+<h3 style="margin-top: 25px; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-server"></i> Serveurs</h3>
+<ul>
+  <li><strong>Fonction principale :</strong> Fournir des services centralisés comme le stockage, l'hébergement web, l'authentification, ou la virtualisation aux clients du réseau</li>
+  <li><strong>Couche OSI :</strong> Couche 7 (Application)</li>
+  <li><strong>Types :</strong> Serveurs web, serveurs de fichiers, serveurs de base de données, serveurs d'application</li>
+  <li><strong>Caractéristiques :</strong> Haute disponibilité, redondance, gestion à distance (IPMI/iLO)</li>
+  <li><strong>Utilisation typique :</strong> Centres de données, infrastructures critiques, cloud computing</li>
+  <li><strong>Exemples :</strong> Dell PowerEdge, HPE ProLiant, Lenovo ThinkSystem</li>
+</ul>
+
+<h3 style="margin-top: 25px; color: var(--primary); margin-bottom: 15px;"><i class="fas fa-network-wired"></i> Autres équipements essentiels</h3>
+<ul>
+  <li><span class="highlight">Répéteurs (Repeaters)</span> : Amplifient le signal réseau pour étendre la portée physique (couche 1)</li>
+  <li><span class="highlight">Ponts (Bridges)</span> : Connectent deux segments de réseau au niveau de la couche 2</li>
+  <li><span class="highlight">Concentrateurs (Hubs)</span> : Anciens équipements qui diffusent le trafic à tous les ports (obsolètes, remplacés par les switches)</li>
+  <li><span class="highlight">Cartes réseau (NIC)</span> : Interfaces physiques intégrées ou externes permettant la connexion réseau (Ethernet, Wi-Fi, fibre)</li>
+  <li><span class="highlight">Équipements de téléphonie IP</span> : Téléphones IP, contrôleurs PBX pour la voix sur IP</li>
+</ul>
+</section>
+
+<section id="software">
+<h2><i class="fas fa-download"></i> 4️⃣ Logiciels & Installation</h2>
+<ul>
+  <li><span class="highlight">Systèmes d'exploitation</span> : Windows Server 2022, Ubuntu Server 22.04 LTS, pfSense</li>
+  <li><span class="highlight">Applications réseau</span> : Wireshark, Nmap, Metasploit, Burp Suite</li>
+  <li><span class="highlight">Utilitaires système</span> : GParted, Clonezilla, HWiNFO, CrystalDiskInfo</li>
+  <li><span class="highlight">Drivers réseau</span> : Pilotes spécifiques pour cartes Intel, Realtek, Broadcom</li>
+  <li><span class="highlight">Méthodes d'installation</span> : PXE Boot, Kickstart, AutoUnattend.xml, scripts PowerShell/Bash</li>
+</ul>
+</section>
+
+<section id="security">
+<h2><i class="fas fa-shield-alt"></i> 5️⃣ Sécurité système</h2>
+<ul>
+  <li><span class="highlight">Gestion des identités</span> : Active Directory, LDAP, RBAC, moindre privilège</li>
+  <li><span class="highlight">Pare-feu applicatif</span> : Windows Defender Firewall, iptables, pfSense</li>
+  <li><span class="highlight">Antivirus/EDR</span> : CrowdStrike, SentinelOne, Microsoft Defender for Endpoint</li>
+  <li><span class="highlight">Chiffrement</span> : BitLocker, LUKS, TLS 1.3, certificats X.509</li>
+  <li><span class="highlight">Mises à jour</span> : WSUS, Landscape, patch management automatisé</li>
+  <li><span class="highlight">Sauvegardes</span> : Veeam, Bacula, stratégie 3-2-1-1-0 pour la résilience</li>
+</ul>
+</section>
+
+<section id="number">
+<h2><i class="fas fa-calculator"></i> 6️⃣ Systèmes de numération</h2>
+
+<div style="background: #0d47a1; padding: 25px; border-radius: 12px; margin: 20px 0;">
+  <h3 style="color: white; text-align: center; margin-bottom: 20px;">Number Systems</h3>
+  <div style="display: flex; justify-content: center; align-items: center; font-size: 2rem; color: white; background: white; padding: 20px; border-radius: 8px; margin: 0 auto; max-width: 400px;">
+    <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; text-align: center; color: #0d47a1;">
+      <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+      <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+      <div>0</div><div>1</div><div>0</div><div>1</div><div>0</div><div>1</div><div>0</div><div>1</div>
+    </div>
+  </div>
+</div>
+
+<ul>
+  <li><span class="highlight">Binaire (Base-2)</span> : Adresses IPv4, masques de sous-réseau, calculs CIDR</li>
+  <li><span class="highlight">Octal (Base-8)</span> : Permissions Unix/Linux (chmod 755 = rwxr-xr-x)</li>
+  <li><span class="highlight">Décimal (Base-10)</span> : Numérotation des ports TCP/UDP, tailles de paquets</li>
+  <li><span class="highlight">Hexadécimal (Base-16)</span> : Adresses MAC, dumps mémoire, codes couleur</li>
+  <li><span class="highlight">ASCII/Unicode</span> : Encodage des caractères, payloads d'attaques</li>
+  <li><span class="highlight">Base64</span> : Certificats SSL/TLS, tokens JWT, transfert de fichiers</li>
+</ul>
+
+<div class="code-block">
+// Conversion binaire ↔ décimal<br>
+1011₂ = (1×2³) + (0×2²) + (1×2¹) + (1×2⁰) = 8 + 0 + 2 + 1 = 11₁₀<br><br>
+// Hexadécimal ↔ binaire (réseau)<br>
+MAC: 00:1A:2B:3C:4D:5E = 00000000:00011010:00101011:00111100:01001101:01011110<br><br>
+// Octal → permissions Linux<br>
+chmod 644 = rw-r--r-- (propriétaire: lecture/écriture, groupe/autres: lecture seule)
+</div>
+</section>
+
+<section id="exercises">
+<h2><i class="fas fa-clipboard-list"></i> 7️⃣ Exercices pratiques</h2>
+<div class="exercises">
+  <h3><i class="fas fa-flask"></i> Mettez en pratique vos connaissances :</h3>
+  <ol>
+    <li><strong>Calcul CIDR</strong> : Quel est le nombre d'hôtes utilisables dans un réseau /26 ?</li>
+    <li><strong>Conversion binaire</strong> : Convertissez l'adresse IP 172.16.254.1 en binaire complet</li>
+    <li><strong>Permissions Linux</strong> : Donnez la commande chmod équivalente à rwxr-x---</li>
+    <li><strong>Adressage MAC</strong> : Identifiez le fabricant à partir de l'adresse MAC 00:1B:44:11:3A:B7</li>
+    <li><strong>Sous-réseaux</strong> : Divisez le réseau 192.168.1.0/24 en 4 sous-réseaux égaux</li>
+  </ol>
+</div>
+</section>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <i class="fas fa-graduation-cap"></i>
+    <span>ALX Cybersecurity Program</span>
+  </div>
+  <p>© 2026 – Projet pédagogique Cybersécurité | Conçu pour les professionnels des réseaux informatique</p>
+</footer>
+
+</div>
+
+<script>
+const btn=document.getElementById("toggle");
+btn.onclick=()=>{
+ document.body.classList.toggle("dark");
+ btn.innerHTML=document.body.classList.contains("dark")
+ ?'<i class="fas fa-sun"></i>'
+ :'<i class="fas fa-moon"></i>';
+ 
+ // Save preference
+ if(document.body.classList.contains("dark")) {
+   localStorage.setItem('theme', 'dark');
+ } else {
+   localStorage.setItem('theme', 'light');
+ }
+};
+
+// Load saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if(savedTheme === 'dark') {
+  document.body.classList.add('dark');
+  btn.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+
 </body>
 </html>
-
 
