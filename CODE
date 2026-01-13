@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📘 Fondamentaux IT & Cybersécurité</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .banner {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .toc {
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h2 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .toc ul {
+            list-style: none;
+            columns: 2;
+            column-gap: 30px;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+            break-inside: avoid;
+        }
+        
+        .toc a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .toc a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-left: 4px solid var(--secondary);
+            background: #fafafa;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        section h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        section h3 {
+            color: var(--secondary);
+            margin: 15px 0 10px;
+            font-size: 1.4rem;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .highlight {
+            background: var(--light);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        
+        @media (max-width: 768px) {
+            .toc ul {
+                columns: 1;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📘 Fondamentaux IT & Cybersécurité</h1>
+            <p>Ce projet regroupe les concepts essentiels de l'informatique et de la cybersécurité, ainsi que des exercices pratiques pour débutants et professionnels.</p>
+        </header>
+        
+        <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Cybersecurity Banner" class="banner">
+        
+        <div class="content">
+            <div class="toc">
+                <h2>Table des matières</h2>
+                <ul>
+                    <li><a href="#section1">1. Introduction à l'Informatique 💻</a></li>
+                    <li><a href="#section2">2. Types de matériels et composants 🖥️📱</a></li>
+                    <li><a href="#section3">3. Équipements réseau 🌐</a></li>
+                    <li><a href="#section4">4. Logiciels et installation 🛠️</a></li>
+                    <li><a href="#section5">5. Configuration système et sécurité 🔐</a></li>
+                    <li><a href="#section6">6. Systèmes de numération 🔢</a></li>
+                    <li><a href="#section7">7. Conversion entre systèmes de numération 🔄</a></li>
+                    <li><a href="#section8">8. Exercices pratiques 📝</a></li>
+                    <li><a href="#section9">9. Liens utiles 🌐</a></li>
+                </ul>
+            </div>
+            
+            <section id="section1">
+                <h2>1. Introduction à l'Informatique 💻</h2>
+                <p>L'informatique (IT) est la base des systèmes et réseaux modernes. Pour un professionnel en cybersécurité, comprendre ces bases permet de :</p>
+                <ul>
+                    <li>Détecter les vulnérabilités</li>
+                    <li>Protéger les systèmes</li>
+                    <li>Réagir efficacement aux incidents</li>
+                </ul>
+            </section>
+            
+            <section id="section2">
+                <h2>2. Types de matériels et composants 🖥️📱</h2>
+                
+                <h3>Ordinateurs</h3>
+                <ul>
+                    <li><span class="highlight">Desktop</span> : Fixe, puissant et évolutif</li>
+                    <li><span class="highlight">Laptop</span> : Portable, intégrant tous les composants</li>
+                    <li><span class="highlight">Serveurs</span> : Fournissent des services aux autres machines</li>
+                    <li><span class="highlight">Appareils mobiles</span> : Smartphones, tablettes</li>
+                    <li><span class="highlight">Objets connectés (IoT)</span> : Caméras, thermostats, assistants vocaux</li>
+                    <li><span class="highlight">Systèmes embarqués</span> : Ordinateurs intégrés dans machines spécialisées</li>
+                </ul>
+                
+                <h3>Composants matériels essentiels</h3>
+                <ul>
+                    <li><span class="highlight">CPU</span> : Processeur, "cerveau" de l'ordinateur</li>
+                    <li><span class="highlight">RAM</span> : Mémoire temporaire pour exécuter les programmes</li>
+                    <li><span class="highlight">Stockage</span> : HDD / SSD</li>
+                    <li><span class="highlight">Carte mère</span> : Connecte tous les composants et contient BIOS/UEFI</li>
+                    <li><span class="highlight">GPU</span> : Processeur graphique</li>
+                    <li><span class="highlight">Périphériques</span> : Clavier, souris, caméra, USB…</li>
+                </ul>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1581091012184-6e3e6ec8f3e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Hardware Components">
+                </div>
+            </section>
+            
+            <section id="section3">
+                <h2>3. Équipements réseau 🌐</h2>
+                <ul>
+                    <li><span class="highlight">Routeurs</span> : Dirigent le trafic entre réseaux</li>
+                    <li><span class="highlight">Switches</span> : Connectent les appareils sur un réseau local</li>
+                    <li><span class="highlight">Firewalls</span> : Filtrent le trafic pour sécuriser les données</li>
+                    <li><span class="highlight">Points d'accès</span> : Fournissent le Wi-Fi aux appareils</li>
+                    <li><span class="highlight">Modems / Passerelles</span> : Connectent le réseau à Internet</li>
+                    <li><span class="highlight">Cartes réseau (NIC)</span> : Interface physique pour le réseau</li>
+                </ul>
+                
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1593642634367-d91a135587b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Network Equipment">
+                </div>
+            </section>
+            
+            <section id="section4">
+                <h2>4. Logiciels et installation 🛠️</h2>
+                
+                <h3>Types de logiciels</h3>
+                <ul>
+                    <li><span class="highlight">OS</span> : Windows, Linux, macOS</li>
+                    <li><span class="highlight">Applications</span> : Productivité, multimédia, jeux</li>
+                    <li><span class="highlight">Utilitaires</span> : Optimisation, maintenance</li>
+                    <li><span class="highlight">Drivers</span> : Communication entre matériel et OS</li>
+                </ul>
+                
+                <h3>Installation</h3>
+                <ul>
+                    <li><span class="highlight">Support physique</span> : DVD, clé USB</li>
+                    <li><span class="highlight">Téléchargement en ligne</span></li>
+                    <li><span class="highlight">Gestionnaires de paquets</span> : winget, apt/yum, Homebrew</li>
+                    <li><span class="highlight">Ligne de commande</span> : Installation et configuration avancée</li>
+                </ul>
+            </section>
+            
+            <section id="section5">
+                <h2>5. Configuration système et sécurité 🔐</h2>
+                <ul>
+                    <li><span class="highlight">BIOS / UEFI</span> : Initialisation du matériel et ordre de démarrage</li>
+                    <li><span class="highlight">Partitionnement / Formats</span> : MBR, GPT, NTFS, ext4, exFAT</li>
+                    <li><span class="highlight">Gestion des drivers</span> : Installation et mise à jour</li>
+                    <li><span class="highlight">Comptes utilisateurs</span> : Admin, standard, invité</li>
+                    <li><span class="highlight">Paramètres réseau</span> : IP statique / DHCP, DNS, proxy</li>
+                    <li><span class="highlight">Sécurité</span> : Firewall, antivirus, mises à jour, mots de passe forts</li>
+                    <li><span class="highlight">Sauvegardes</span> : Full, incrémentale, différentielle, locales ou cloud</li>
+                </ul>
+            </section>
+            
+            <section id="section6">
+                <h2>6. Systèmes de numération 🔢</h2>
+                <ul>
+                    <li><span class="highlight">Binaire (2)</span> : 0 et 1</li>
+                    <li><span class="highlight">Octal (8)</span> : 0–7</li>
+                    <li><span class="highlight">Décimal (10)</span> : Standard humain</li>
+                    <li><span class="highlight">Hexadécimal (16)</span> : 0–9 + A–F</li>
+                    <li><span class="highlight">Encodage</span> : ASCII, Unicode</li>
+                    <li><span class="highlight">Base64</span> : Binaire → texte</li>
+                </ul>
+            </section>
+            
+            <section id="section7">
+                <h2>7. Conversion entre systèmes de numération 🔄</h2>
+                <div class="code-block">
+Binaire ↔ Décimal : 1011₂ = 11₁₀<br>
+Décimal ↔ Binaire : 11₁₀ = 1011₂<br>
+Hexadécimal ↔ Binaire/Décimal : FF₁₆ = 11111111₂ = 255₁₀<br>
+Octal ↔ Binaire/Décimal : 77₈ = 111111₂ = 63₁₀
+                </div>
+            </section>
+            
+            <section id="section8">
+                <h2>8. Exercices pratiques 📝</h2>
+                <p>Essayez ces exercices pour tester vos connaissances :</p>
+                <ol>
+                    <li><strong>Addition binaire</strong> : 1011 + 1101 = ?</li>
+                    <li><strong>Conversion d'adresse IP</strong> : 192.168.1.1 en binaire</li>
+                    <li><strong>Masque de sous-réseau</strong> : 255.255.255.0 en binaire</li>
+                </ol>
+            </section>
+            
+            <section id="section9">
+                <h2>9. Liens utiles 🌐</h2>
+                <ul>
+                    <li><a href="https://www.cisco.com/c/en/us/solutions/small-business/resource-center/networking/networking-basics.html" target="_blank">Cisco Networking Basics</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/computer-network-tutorials/" target="_blank">GeeksforGeeks - Computer Networks</a></li>
+                    <li><a href="https://www.cybrary.it/" target="_blank">Cybrary - Free Cybersecurity Training</a></li>
+                    <li><a href="https://tryhackme.com/" target="_blank">TryHackMe - Hands-on Cybersecurity</a></li>
+                </ul>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Copyright © 2026 ALX, All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
+
+
