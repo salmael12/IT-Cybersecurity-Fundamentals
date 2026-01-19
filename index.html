@@ -31,7 +31,7 @@ header h1 {font-size: 2rem; margin-bottom: 5px;}
 header p {font-size: 1rem; max-width: 800px; margin:auto;}
 
 /* Toggle bouton */
-.toggle {position: fixed; top: 20px; right: 20px; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem;}
+.toggle {position: fixed; top: 20px; right: 20px; background: var(--accent); color:white; border:none; border-radius:50%; width:45px; height:45px; cursor:pointer; font-size:1.2rem; display:flex; align-items:center; justify-content:center;}
 
 /* Sections */
 section {background: var(--card-light); padding:15px; margin:15px 0; border-radius:10px; transition:0.3s;}
@@ -46,7 +46,7 @@ body.dark h2 {color: var(--secondary);}
 body.dark .toc {background: var(--card-dark);}
 .toc ul {list-style:none;}
 .toc li {margin-bottom:8px;}
-.toc a {text-decoration:none; color: var(--primary);}
+.toc a {text-decoration:none; color: var(--primary); display:flex; align-items:center; gap:8px;}
 body.dark .toc a {color: var(--secondary);}
 
 /* Listes */
@@ -54,7 +54,7 @@ ul {margin-left:20px; margin-top:10px;}
 li::before {content: "• "; color: var(--accent); font-weight:bold;}
 
 /* Code block */
-.code-block {background:#0f172a; color:#e0f7fa; padding:8px; border-radius:6px; font-family: monospace; overflow-x:auto; margin:8px 0;}
+.code-block {background:#0f172a; color:#e0f7fa; padding:8px; border-radius:6px; font-family: monospace; overflow-x:auto; margin:8px 0; display:inline-block;}
 body.dark .code-block {background:#091122;}
 
 /* Footer */
@@ -63,7 +63,7 @@ footer {text-align:center; margin-top:20px; padding:10px; font-size:0.9rem;}
 /* Exercices */
 .answer {display:none; padding:8px; background:#dcefff; margin-top:5px; border-radius:5px;}
 body.dark .answer {background:#223344;}
-.reveal-btn, button.check, button.solution {padding:5px 10px; border:none; border-radius:5px; cursor:pointer;}
+.reveal-btn, button.check, button.solution {padding:5px 10px; border:none; border-radius:5px; cursor:pointer; font-family:inherit;}
 .reveal-btn {background: var(--secondary); color:white;}
 button.check {background: var(--primary); color:white; margin-left:5px;}
 button.check:hover {background: var(--secondary);}
@@ -77,6 +77,16 @@ th {background: var(--primary); color:white;}
 body.dark th {background: var(--secondary);}
 td {background: var(--card-light);}
 body.dark td {background: var(--card-dark);}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {padding: 15px;}
+  header h1 {font-size: 1.5rem;}
+  .toggle {top: 15px; right: 15px; width: 40px; height: 40px; font-size: 1rem;}
+  section {padding: 12px; margin: 12px 0;}
+  .toc {padding: 8px;}
+  footer {font-size: 0.8rem;}
+}
 </style>
 </head>
 <body>
@@ -185,7 +195,7 @@ body.dark td {background: var(--card-dark);}
 
 <div>
 <p>2️⃣ Convertir le décimal <strong>14</strong> en binaire :</p>
-<input type="text" id="decimalInput" placeholder="Binaire">
+<input type="text" id="decimalInput" placeholder="Binaire" pattern="[01]*">
 <button class="check" onclick="checkDecimal()">Vérifier</button>
 <button class="solution" onclick="showSolution('decimalSolution')">Voir solution</button>
 <div class="answer" id="decimalAnswer"></div>
@@ -216,6 +226,12 @@ body.dark td {background: var(--card-dark);}
 // Toggle thème clair/sombre
 document.getElementById('toggle').addEventListener('click', () => {
   document.body.classList.toggle('dark');
+  const icon = document.querySelector('#toggle i');
+  if (document.body.classList.contains('dark')) {
+    icon.className = 'fas fa-sun';
+  } else {
+    icon.className = 'fas fa-moon';
+  }
 });
 
 // Montrer/cacher solution
@@ -226,20 +242,55 @@ function showSolution(id){
 
 // Exercices simples
 function checkBinary(){
-  const val = parseInt(document.getElementById('binaryInput').value);
+  const input = document.getElementById('binaryInput');
+  const val = parseInt(input.value);
   const ans = document.getElementById('binaryAnswer');
+  
+  // Validation de l'entrée
+  if (input.value === '' || isNaN(val)) {
+    ans.style.display='block';
+    ans.textContent = "❌ Veuillez entrer un nombre valide";
+    return;
+  }
+  
   ans.style.display='block';
   ans.textContent = (val===13) ? "✅ Correct ! 1101₂ = 13₁₀" : "❌ Incorrect, essaie encore";
 }
+
 function checkDecimal(){
-  const val = document.getElementById('decimalInput').value.trim();
+  const input = document.getElementById('decimalInput');
+  const val = input.value.trim();
   const ans = document.getElementById('decimalAnswer');
+  
+  // Validation de l'entrée (doit être composé uniquement de 0 et 1)
+  if (val === '') {
+    ans.style.display='block';
+    ans.textContent = "❌ Veuillez entrer une valeur binaire";
+    return;
+  }
+  
+  if (!/^[01]+$/.test(val)) {
+    ans.style.display='block';
+    ans.textContent = "❌ Veuillez entrer uniquement des 0 et des 1";
+    return;
+  }
+  
   ans.style.display='block';
   ans.textContent = (val==="1110") ? "✅ Correct ! 14₁₀ = 1110₂" : "❌ Incorrect, essaie encore";
 }
+
 function checkASCII(){
-  const val = parseInt(document.getElementById('asciiInput').value);
+  const input = document.getElementById('asciiInput');
+  const val = parseInt(input.value);
   const ans = document.getElementById('asciiAnswer');
+  
+  // Validation de l'entrée
+  if (input.value === '' || isNaN(val)) {
+    ans.style.display='block';
+    ans.textContent = "❌ Veuillez entrer un nombre valide";
+    return;
+  }
+  
   ans.style.display='block';
   ans.textContent = (val===66) ? "✅ Correct ! B = 66 décimal" : "❌ Incorrect, essaie encore";
 }
@@ -247,3 +298,4 @@ function checkASCII(){
 
 </body>
 </html>
+
